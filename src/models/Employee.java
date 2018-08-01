@@ -92,7 +92,6 @@ public class Employee {
 
     public Integer getAdmin_flag() {
         return admin_flag;
-
     }
 
     public void setAdmin_flag(Integer admin_flag) {

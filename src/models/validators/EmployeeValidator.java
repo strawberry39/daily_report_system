@@ -22,9 +22,9 @@ public class EmployeeValidator {
             errors.add(name_error);
         }
 
-        String password_error = _validateName(e.getName());
-        if(!name_error.equals("")) {
-            errors.add(name_error);
+        String password_error = _validatePassword(e.getPassword(), password_check_flag);
+        if(!password_error.equals("")) {
+            errors.add(password_error);
         }
 
         return errors;
@@ -39,10 +39,10 @@ public class EmployeeValidator {
             EntityManager em = DBUtil.createEntityManager();
             long employees_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class)
                                            .setParameter("code", code)
-                                               .getSingleResult();
+                                             .getSingleResult();
             em.close();
             if(employees_count > 0) {
-                return "入力された社員番号の情報はすでに存在しています。";
+                return "入力された社員番号の情報は既に存在しています。";
             }
         }
 
@@ -61,7 +61,6 @@ public class EmployeeValidator {
         if(password_check_flag && (password == null || password.equals(""))) {
             return "パスワードを入力してください。";
         }
-
         return "";
     }
 }
