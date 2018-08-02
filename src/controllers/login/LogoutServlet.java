@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -23,13 +23,14 @@ public class LogoutServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().removeAttribute("login_employee");
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().removeAttribute("login_employee");
 
-		request.getSession().setAttribute("flush", "ログアウトしました。");
-		response.sendRedirect(request.getContextPath() + "/login");
-	}
+        request.getSession().setAttribute("flush", "ログアウトしました。");
+        response.sendRedirect(request.getContextPath() + "/login");
+    }
+
 }
